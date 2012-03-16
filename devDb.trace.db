@@ -1,0 +1,181 @@
+03-14 20:53:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+UPDATE TABLE TEST AS SELECT * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') [42102-147]
+03-14 20:56:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO TEST FROM CSVREAD('/home/stephen/Desktop/Voter.csv')"; expected "SELECT"; SQL statement:
+INSERT INTO TEST FROM CSVREAD('/home/stephen/Desktop/Voter.csv') [42001-147]
+03-14 20:57:49 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO TEST ( FROM CSVREAD('/home/stephen/Desktop/Voter.csv') )"; expected "SELECT"; SQL statement:
+INSERT INTO TEST ( FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [42001-147]
+03-14 20:58:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:00:29 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:00:31 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:03:51 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:03:53 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:04:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:04:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:04:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:04:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO TEST ( select Last_NAME FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [21002-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.message.DbException.get(DbException.java:133)
+	at org.h2.command.dml.Insert.prepare(Insert.java:236)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:165)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:153)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp.query(WebApp.java:980)
+	at org.h2.server.web.WebApp.process(WebApp.java:217)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:164)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:118)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:153)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:641)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:722)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.mapping.filter.UrlMappingsFilter.processFilterChain(UrlMappingsFilter.java:364)
+	at org.codehaus.groovy.grails.web.mapping.filter.UrlMappingsFilter.doFilterInternal(UrlMappingsFilter.java:231)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.obtainContent(GrailsPageFilter.java:200)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.doFilter(GrailsPageFilter.java:151)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at javax.servlet.FilterChain$doFilter.call(Unknown Source)
+	at org.grails.plugin.resource.DevModeSanityFilter.doFilter(DevModeSanityFilter.groovy:44)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.servlet.mvc.GrailsWebRequestFilter.doFilterInternal(GrailsWebRequestFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.filters.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:65)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:259)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:224)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:169)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:168)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:98)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:407)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:987)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:579)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:309)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:722)
+03-14 21:05:14 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO TEST ( select LAST_NAME  FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [21002-147]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.message.DbException.get(DbException.java:133)
+	at org.h2.command.dml.Insert.prepare(Insert.java:236)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:165)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:153)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1316)
+	at org.h2.server.web.WebApp.query(WebApp.java:1004)
+	at org.h2.server.web.WebApp.query(WebApp.java:980)
+	at org.h2.server.web.WebApp.process(WebApp.java:217)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:164)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:118)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:153)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:641)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:722)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.mapping.filter.UrlMappingsFilter.processFilterChain(UrlMappingsFilter.java:364)
+	at org.codehaus.groovy.grails.web.mapping.filter.UrlMappingsFilter.doFilterInternal(UrlMappingsFilter.java:231)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.obtainContent(GrailsPageFilter.java:200)
+	at org.codehaus.groovy.grails.web.sitemesh.GrailsPageFilter.doFilter(GrailsPageFilter.java:151)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at javax.servlet.FilterChain$doFilter.call(Unknown Source)
+	at org.grails.plugin.resource.DevModeSanityFilter.doFilter(DevModeSanityFilter.groovy:44)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.servlet.mvc.GrailsWebRequestFilter.doFilterInternal(GrailsWebRequestFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.codehaus.groovy.grails.web.filters.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:65)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:259)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:224)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:169)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:168)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:98)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:407)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:987)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:579)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:309)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:722)
+03-14 21:05:20 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:05:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO TEST ( SELECT  FROM CSVREAD('/home/stephen/Desktop/Voter.csv') )[*] "; expected "SELECT"; SQL statement:
+INSERT INTO TEST ( select  FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [42001-147]
+03-14 21:05:51 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:08:38 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
+03-14 21:13:42 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT "; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS"; SQL statement:
+SHOW TABLE TEST [42001-147]
+03-14 21:15:13 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: NULL not allowed for column "VERSION"; SQL statement:
+INSERT INTO TEST ( select * FROM CSVREAD('/home/stephen/Desktop/Voter.csv') ) [90006-147]
