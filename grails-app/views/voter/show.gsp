@@ -27,9 +27,6 @@
 		
 		  function codeAddress() {
 			var regularAddressNumber = document.getElementById("regularAddressNumber-value").innerHTML;
-			//var regularAddressNumberSuffix = "";
-			//var regularStreetDirectionPrefix = "";
-			//var regularStreetDirectionSuffix = "";
 			var regularAddressNumberSuffix = document.getElementById("regularAddressNumberSuffix-value");
 			if (regularAddressNumberSuffix == null) {
 				regularAddressNumberSuffix = "";
