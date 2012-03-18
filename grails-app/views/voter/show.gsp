@@ -1,13 +1,75 @@
-
 <%@ page import="voterregistration.Voter" %>
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		
 		<g:set var="entityName" value="${message(code: 'voter.label', default: 'Voter')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		
+		    <script type="text/javascript"
+		      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBR-CcNynp07piQ_5vIXn-f_QdEp7PEYqw&sensor=false">
+		    </script>
+		    <script type="text/javascript">
+		  var geocoder;
+		  var map;
+		  
+		  function initialize() {
+		    geocoder = new google.maps.Geocoder();
+		    var latlng = new google.maps.LatLng(-34.397, 150.644);
+		    var myOptions = {
+		      zoom: 20,
+		      center: latlng,
+		      mapTypeId: google.maps.MapTypeId.HYBRID
+		    }
+		    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+		  }
+		
+		  function codeAddress() {
+			var regularAddressNumber = document.getElementById("regularAddressNumber-value").innerHTML;
+			//var regularAddressNumberSuffix = "";
+			//var regularStreetDirectionPrefix = "";
+			//var regularStreetDirectionSuffix = "";
+			var regularAddressNumberSuffix = document.getElementById("regularAddressNumberSuffix-value");
+			if (regularAddressNumberSuffix == null) {
+				regularAddressNumberSuffix = "";
+			} else {
+				regularAddressNumberSuffix = regularAddressNumberSuffix.innerHTML;
+			}
+			var regularStreetDirectionPrefix = document.getElementById("regularStreetDirectionPrefix-value");
+			if (regularStreetDirectionPrefix == null) {
+				regularStreetDirectionPrefix = "";
+			} else {
+				regularStreetDirectionPrefix = regularStreetDirectionPrefix.innerHTML;
+			}
+			var regularStreetDirectionSuffix = document.getElementById("regularStreetDirectionSuffix-value");
+			if (regularStreetDirectionSuffix == null) {
+				regularStreetDirectionSuffix = "";
+			} else {
+				regularStreetDirectionSuffix = regularStreetDirectionSuffix.innerHTML;
+			}
+			var regularStreetName = document.getElementById("regularStreetName-value").innerHTML;
+			var regularStreetType = document.getElementById("regularStreetType-value").innerHTML;
+			var regularCity = document.getElementById("regularCity-value").innerHTML;
+			var regularState = document.getElementById("regularState-value").innerHTML;
+			
+		    var address = regularAddressNumber + " " + regularAddressNumberSuffix + " " + regularStreetDirectionPrefix + " " + regularStreetName + " " + regularStreetDirectionSuffix + " " + regularStreetType + "," + regularCity + "," + regularState;
+		    alert(address);
+		    geocoder.geocode( { 'address': address}, function(results, status) {
+		      if (status == google.maps.GeocoderStatus.OK) {
+		        map.setCenter(results[0].geometry.location);
+		        var marker = new google.maps.Marker({
+		            map: map,
+		            position: results[0].geometry.location
+		        });
+		      } else {
+		        alert("Geocode was not successful for the following reason: " + status);
+		      }
+		    });
+		  }
+		  </script>
 	</head>
-	<body>
+	<body onload="initialize(); codeAddress();">	
 		<a href="#show-voter" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
@@ -684,7 +746,7 @@
 				<li class="fieldcontain">
 					<span id="regularAddressNumber-label" class="property-label"><g:message code="voter.regularAddressNumber.label" default="Regular Address Number" /></span>
 					
-						<span class="property-value" aria-labelledby="regularAddressNumber-label"><g:fieldValue bean="${voterInstance}" field="regularAddressNumber"/></span>
+						<span id="regularAddressNumber-value" class="property-value" aria-labelledby="regularAddressNumber-label"><g:fieldValue bean="${voterInstance}" field="regularAddressNumber"/></span>
 					
 				</li>
 				</g:if>
@@ -693,7 +755,7 @@
 				<li class="fieldcontain">
 					<span id="regularAddressNumberSuffix-label" class="property-label"><g:message code="voter.regularAddressNumberSuffix.label" default="Regular Address Number Suffix" /></span>
 					
-						<span class="property-value" aria-labelledby="regularAddressNumberSuffix-label"><g:fieldValue bean="${voterInstance}" field="regularAddressNumberSuffix"/></span>
+						<span id="regularAddressNumberSuffix-value" class="property-value" aria-labelledby="regularAddressNumberSuffix-label"><g:fieldValue bean="${voterInstance}" field="regularAddressNumberSuffix"/></span>
 					
 				</li>
 				</g:if>
@@ -702,7 +764,7 @@
 				<li class="fieldcontain">
 					<span id="regularCity-label" class="property-label"><g:message code="voter.regularCity.label" default="Regular City" /></span>
 					
-						<span class="property-value" aria-labelledby="regularCity-label"><g:fieldValue bean="${voterInstance}" field="regularCity"/></span>
+						<span id="regularCity-value" class="property-value" aria-labelledby="regularCity-label"><g:fieldValue bean="${voterInstance}" field="regularCity"/></span>
 					
 				</li>
 				</g:if>
@@ -711,7 +773,7 @@
 				<li class="fieldcontain">
 					<span id="regularState-label" class="property-label"><g:message code="voter.regularState.label" default="Regular State" /></span>
 					
-						<span class="property-value" aria-labelledby="regularState-label"><g:fieldValue bean="${voterInstance}" field="regularState"/></span>
+						<span id="regularState-value" class="property-value" aria-labelledby="regularState-label"><g:fieldValue bean="${voterInstance}" field="regularState"/></span>
 					
 				</li>
 				</g:if>
@@ -720,7 +782,7 @@
 				<li class="fieldcontain">
 					<span id="regularStreetDirectionPrefix-label" class="property-label"><g:message code="voter.regularStreetDirectionPrefix.label" default="Regular Street Direction Prefix" /></span>
 					
-						<span class="property-value" aria-labelledby="regularStreetDirectionPrefix-label"><g:fieldValue bean="${voterInstance}" field="regularStreetDirectionPrefix"/></span>
+						<span id="regularStreetDirectionPrefix-value" class="property-value" aria-labelledby="regularStreetDirectionPrefix-label"><g:fieldValue bean="${voterInstance}" field="regularStreetDirectionPrefix"/></span>
 					
 				</li>
 				</g:if>
@@ -729,7 +791,7 @@
 				<li class="fieldcontain">
 					<span id="regularStreetDirectionSuffix-label" class="property-label"><g:message code="voter.regularStreetDirectionSuffix.label" default="Regular Street Direction Suffix" /></span>
 					
-						<span class="property-value" aria-labelledby="regularStreetDirectionSuffix-label"><g:fieldValue bean="${voterInstance}" field="regularStreetDirectionSuffix"/></span>
+						<span id="regularStreetDirectionSuffix-value" class="property-value" aria-labelledby="regularStreetDirectionSuffix-label"><g:fieldValue bean="${voterInstance}" field="regularStreetDirectionSuffix"/></span>
 					
 				</li>
 				</g:if>
@@ -738,7 +800,7 @@
 				<li class="fieldcontain">
 					<span id="regularStreetName-label" class="property-label"><g:message code="voter.regularStreetName.label" default="Regular Street Name" /></span>
 					
-						<span class="property-value" aria-labelledby="regularStreetName-label"><g:fieldValue bean="${voterInstance}" field="regularStreetName"/></span>
+						<span id="regularStreetName-value" class="property-value" aria-labelledby="regularStreetName-label"><g:fieldValue bean="${voterInstance}" field="regularStreetName"/></span>
 					
 				</li>
 				</g:if>
@@ -747,7 +809,7 @@
 				<li class="fieldcontain">
 					<span id="regularStreetType-label" class="property-label"><g:message code="voter.regularStreetType.label" default="Regular Street Type" /></span>
 					
-						<span class="property-value" aria-labelledby="regularStreetType-label"><g:fieldValue bean="${voterInstance}" field="regularStreetType"/></span>
+						<span id="regularStreetType-value" class="property-value" aria-labelledby="regularStreetType-label"><g:fieldValue bean="${voterInstance}" field="regularStreetType"/></span>
 					
 				</li>
 				</g:if>
@@ -756,7 +818,7 @@
 				<li class="fieldcontain">
 					<span id="regularUnitNumber-label" class="property-label"><g:message code="voter.regularUnitNumber.label" default="Regular Unit Number" /></span>
 					
-						<span class="property-value" aria-labelledby="regularUnitNumber-label"><g:fieldValue bean="${voterInstance}" field="regularUnitNumber"/></span>
+						<span id="regularUnitNumber-value" class="property-value" aria-labelledby="regularUnitNumber-label"><g:fieldValue bean="${voterInstance}" field="regularUnitNumber"/></span>
 					
 				</li>
 				</g:if>
@@ -765,7 +827,7 @@
 				<li class="fieldcontain">
 					<span id="regularUnitType-label" class="property-label"><g:message code="voter.regularUnitType.label" default="Regular Unit Type" /></span>
 					
-						<span class="property-value" aria-labelledby="regularUnitType-label"><g:fieldValue bean="${voterInstance}" field="regularUnitType"/></span>
+						<span id="regularUnitType-value" class="property-value" aria-labelledby="regularUnitType-label"><g:fieldValue bean="${voterInstance}" field="regularUnitType"/></span>
 					
 				</li>
 				</g:if>
@@ -774,7 +836,7 @@
 				<li class="fieldcontain">
 					<span id="regularZipCode-label" class="property-label"><g:message code="voter.regularZipCode.label" default="Regular Zip Code" /></span>
 					
-						<span class="property-value" aria-labelledby="regularZipCode-label"><g:fieldValue bean="${voterInstance}" field="regularZipCode"/></span>
+						<span id="regularZipCode-value" class="property-value" aria-labelledby="regularZipCode-label"><g:fieldValue bean="${voterInstance}" field="regularZipCode"/></span>
 					
 				</li>
 				</g:if>
@@ -783,7 +845,7 @@
 				<li class="fieldcontain">
 					<span id="regularZipCodeSuffix-label" class="property-label"><g:message code="voter.regularZipCodeSuffix.label" default="Regular Zip Code Suffix" /></span>
 					
-						<span class="property-value" aria-labelledby="regularZipCodeSuffix-label"><g:fieldValue bean="${voterInstance}" field="regularZipCodeSuffix"/></span>
+						<span id="regularZipCodeSuffix-value" class="property-value" aria-labelledby="regularZipCodeSuffix-label"><g:fieldValue bean="${voterInstance}" field="regularZipCodeSuffix"/></span>
 					
 				</li>
 				</g:if>
@@ -843,6 +905,8 @@
 				</g:if>
 			
 			</ol>
+			<div id="map_canvas" style="width: 90%; height: 480px;"></div>
+			
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${voterInstance?.id}" />
