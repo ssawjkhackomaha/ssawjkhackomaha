@@ -5,6 +5,11 @@
 		
 		<g:set var="entityName" value="${message(code: 'voter.label', default: 'Voter')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
+		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
+		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		
 		    <script type="text/javascript"
 		      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBR-CcNynp07piQ_5vIXn-f_QdEp7PEYqw&sensor=false">
@@ -76,6 +81,7 @@
 			</ul>
 		</div>
 		<div id="show-voter" class="content scaffold-show" role="main">
+		<div id="map_canvas" style="padding-top: 200px; padding-left: 200px; width: 79%; height: 400px;"></div>
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
@@ -902,7 +908,6 @@
 				</g:if>
 			
 			</ol>
-			<div id="map_canvas" style="width: 90%; height: 480px;"></div>
 			
 			<g:form>
 				<fieldset class="buttons">
