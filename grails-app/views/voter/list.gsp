@@ -23,16 +23,17 @@
 			<table>
 				<thead>
 					<tr>
+						<g:sortableColumn property="serialNumber" title="${message(code: 'voter.serialNumber.label', default: 'Serial Number')}" />
 					
-						<g:sortableColumn property="boardOfRegents" title="${message(code: 'voter.boardOfRegents.label', default: 'Board Of Regents')}" />
+						<g:sortableColumn property="firstName" title="${message(code: 'voter.firstName.label', default: 'First Name')}" />
 					
-						<g:sortableColumn property="bt" title="${message(code: 'voter.bt.label', default: 'Bt')}" />
+						<g:sortableColumn property="middleInitial" title="${message(code: 'voter.middleInitial.label', default: 'Middle Initial')}" />
 					
-						<g:sortableColumn property="cityC" title="${message(code: 'voter.cityC.label', default: 'City C')}" />
+						<g:sortableColumn property="lastName" title="${message(code: 'voter.lastName.label', default: 'Last Name')}" />
 					
-						<g:sortableColumn property="congressionalDistrict" title="${message(code: 'voter.congressionalDistrict.label', default: 'Congressional District')}" />
+						<g:sortableColumn property="suffix" title="${message(code: 'voter.suffix.label', default: 'Suffix')}" />
 					
-						<g:sortableColumn property="countyCommissioner" title="${message(code: 'voter.countyCommissioner.label', default: 'County Commissioner')}" />
+						<g:sortableColumn property="party" title="${message(code: 'voter.party.label', default: 'Party')}" />
 					
 						<g:sortableColumn property="dateOfBirth" title="${message(code: 'voter.dateOfBirth.label', default: 'Date Of Birth')}" />
 					
@@ -42,15 +43,17 @@
 				<g:each in="${voterInstanceList}" status="i" var="voterInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${voterInstance.id}">${fieldValue(bean: voterInstance, field: "boardOfRegents")}</g:link></td>
+						<td><g:link action="show" id="${voterInstance.id}">${fieldValue(bean: voterInstance, field: "serialNumber")}</g:link></td>
+						
+						<td>${fieldValue(bean: voterInstance, field: "firstName")}</td>
 					
-						<td>${fieldValue(bean: voterInstance, field: "bt")}</td>
+						<td>${fieldValue(bean: voterInstance, field: "middleInitial")}</td>
 					
-						<td>${fieldValue(bean: voterInstance, field: "cityC")}</td>
+						<td>${fieldValue(bean: voterInstance, field: "lastName")}</td>
 					
-						<td>${fieldValue(bean: voterInstance, field: "congressionalDistrict")}</td>
+						<td>${fieldValue(bean: voterInstance, field: "suffix")}</td>
 					
-						<td>${fieldValue(bean: voterInstance, field: "countyCommissioner")}</td>
+						<td>${fieldValue(bean: voterInstance, field: "party")}</td>
 					
 						<td>${fieldValue(bean: voterInstance, field: "dateOfBirth")}</td>
 					
