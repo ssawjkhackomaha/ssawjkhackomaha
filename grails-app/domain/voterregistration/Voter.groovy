@@ -1,6 +1,7 @@
 package voterregistration
 
 class Voter {
+	static searchable = true
 	
 	public Voter(String serialNumber, String title, String firstName, String middleInitial,
 			String lastName, String suffix, String dateOfBirth,

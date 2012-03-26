@@ -3,6 +3,16 @@ package voterregistration
 import org.springframework.dao.DataIntegrityViolationException
 
 class VoterController {
+	def filterPaneService;
+	
+	def filter = {
+		if(!params.max) params.max = 10
+		render( view:'list',
+			model:[ voterInstanceList: filterPaneService.filter( params, Voter ),
+			voterInstanceTotal: filterPaneService.count( params, Voter ),
+			filterParams: org.grails.plugin.filterpane.FilterPaneUtils.extractFilterParams(params),
+			params:params ] )
+	}
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 

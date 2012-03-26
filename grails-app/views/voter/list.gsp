@@ -6,6 +6,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'voter.label', default: 'Voter')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<filterpane:includes />
 	</head>
 	<body>
 		<a href="#list-voter" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -16,6 +17,12 @@
 			</ul>
 		</div>
 		<div id="list-voter" class="content scaffold-list" role="main">
+			<filterpane:filterPane domain="voterregistration.Voter" filterProperties="title, firstName, middleInitial, lastName, suffix, dateOfBirth, 
+			dateofRegistration, placeOfBirth, gender, party, serialNumber, regularAddressNumber, regularAddressNumberSuffix
+			regularStreetDirectionPrefix, regularStreetName, regularStreetType, regularStreetDirectionSuffix, regularUnitType, regularUnitNumber,
+			regularCity, regularState, regularZipCode, regularZipCodeSuffix, mailingAddress1, mailingAddress2, mailingAddress3, mailingAddress4,
+			mailingCity, mailingState, mailingZipCode, mailingZipCodeSuffix, party, dateOfPartyAffiliation"/>
+			<filterpane:filterButton title="Filter" />
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
@@ -62,7 +69,7 @@
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${voterInstanceTotal}" />
+				<g:paginate total="${voterInstanceTotal == null ? Voter.count(): voterInstanceTotal}" params="${filterParams}" />
 			</div>
 		</div>
 	</body>
