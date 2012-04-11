@@ -1,17 +1,19 @@
 package voterregistration
 
+
+import grails.converters.JSON
+import groovy.util.slurpersupport.GPathResult
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class VoterController {
 	def filterPaneService;
 	
 	def filter = {
-		if(!params.max) params.max = 10
-		render( view:'list',
+		//if(!params.max) params.max = 10
+		render( view:'listmap',
 			model:[ voterInstanceList: filterPaneService.filter( params, Voter ),
-			voterInstanceTotal: filterPaneService.count( params, Voter ),
-			filterParams: org.grails.plugin.filterpane.FilterPaneUtils.extractFilterParams(params),
-			params:params ] )
+			voterInstanceTotal: filterPaneService.count( params, Voter ) ] )
 	}
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -24,6 +26,11 @@ class VoterController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [voterInstanceList: Voter.list(params), voterInstanceTotal: Voter.count()]
     }
+	
+	def listmap() {
+		//params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		[voterInstanceList: Voter.list(params), voterInstanceTotal: Voter.count()]
+	}
 
     def create() {
         [voterInstance: new Voter(params)]
@@ -110,4 +117,56 @@ class VoterController {
             redirect(action: "show", id: params.id)
         }
     }
+	
+	def jsonShow = {
+		def id = params.id?.toInteger() ?: "NO Voter"
+		def voter = Voter.get(id);
+		
+		if(!voter){
+		  voter = new Voter(firstName: "Not found.");
+		}
+		
+		render voter as JSON;
+	  }
+	
+	def getLatLong = {
+		def id = params.id?.toInteger() ?: "NO Voter"
+		def wait = params.time?.toInteger() ?: 0;
+		def voter = Voter.get(id);
+		
+		if(!voter){
+		  voter = new Voter(firstName: "Not found.");
+		}
+
+		sleep(wait);
+		//city = 'New York'
+		//state = 'NY'
+		String address = voter.regularAddressNumber + " " + voter.regularAddressNumberSuffix + " " + voter.regularStreetDirectionPrefix + " " + voter.regularStreetName + " " + voter.regularStreetDirectionSuffix + " " + voter.regularStreetType + "," + voter.regularCity + "," + voter.regularState;
+		String base = 'http://maps.google.com/maps/api/geocode/xml?'
+		Map params1 = [sensor:false,
+				  address:[address].collect { URLEncoder.encode(it,'UTF-8') }.join(',+')]
+		String url = base + params1.collect { k,v -> "$k=$v" }.join('&')
+		
+		GPathResult response1 = new XmlSlurper().parse(url)
+		
+		// Walk the tree
+		String lat = response1.result.geometry.location.lat
+		
+		// Finders work too
+		String lng = response1.'**'.find { it.name() =~ /lng/ }
+		
+		Map result = ["latitude": lat, "longitude": lng, "id": id];
+		//println result;
+		if (lat == null || lng == null) {
+			println address;
+			println response1;
+		}
+		
+		render result as JSON;
+
+		
+		//assert Math.abs(40.7142691 - lat.toDouble()) < 0.0001
+		//assert Math.abs(-74.0059729 - lng.toDouble()) < 0.0001
+		
+	}
 }
