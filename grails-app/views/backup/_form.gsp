@@ -2,12 +2,28 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'ballotType', 'error')} ">
-	<label for="ballotType">
-		<g:message code="voter.ballotType.label" default="Ballot Type" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'boardOfRegents', 'error')} ">
+	<label for="boardOfRegents">
+		<g:message code="voter.boardOfRegents.label" default="Board Of Regents" />
 		
 	</label>
-	<g:textField name="ballotType" value="${voterInstance?.ballotType}"/>
+	<g:textField name="boardOfRegents" value="${voterInstance?.boardOfRegents}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'bt', 'error')} ">
+	<label for="bt">
+		<g:message code="voter.bt.label" default="Bt" />
+		
+	</label>
+	<g:textField name="bt" value="${voterInstance?.bt}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'cityC', 'error')} ">
+	<label for="cityC">
+		<g:message code="voter.cityC.label" default="City C" />
+		
+	</label>
+	<g:textField name="cityC" value="${voterInstance?.cityC}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'congressionalDistrict', 'error')} ">
@@ -16,6 +32,14 @@
 		
 	</label>
 	<g:textField name="congressionalDistrict" value="${voterInstance?.congressionalDistrict}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'countyCommissioner', 'error')} ">
+	<label for="countyCommissioner">
+		<g:message code="voter.countyCommissioner.label" default="County Commissioner" />
+		
+	</label>
+	<g:textField name="countyCommissioner" value="${voterInstance?.countyCommissioner}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'dateOfBirth', 'error')} ">
@@ -40,6 +64,14 @@
 		
 	</label>
 	<g:textField name="dateOfRegistration" value="${voterInstance?.dateOfRegistration}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'educationalServiceUnit', 'error')} ">
+	<label for="educationalServiceUnit">
+		<g:message code="voter.educationalServiceUnit.label" default="Educational Service Unit" />
+		
+	</label>
+	<g:textField name="educationalServiceUnit" value="${voterInstance?.educationalServiceUnit}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'firstName', 'error')} ">
@@ -122,60 +154,76 @@
 	<g:textField name="lastName" value="${voterInstance?.lastName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'legislativeDistrict', 'error')} ">
-	<label for="legislativeDistrict">
-		<g:message code="voter.legislativeDistrict.label" default="Legislative District" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'lc', 'error')} ">
+	<label for="lc">
+		<g:message code="voter.lc.label" default="Lc" />
 		
 	</label>
-	<g:textField name="legislativeDistrict" value="${voterInstance?.legislativeDistrict}"/>
+	<g:textField name="lc" value="${voterInstance?.lc}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'legislativeGeneralElection2001', 'error')} ">
-	<label for="legislativeGeneralElection2001">
-		<g:message code="voter.legislativeGeneralElection2001.label" default="Legislative General Election2001" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'ld', 'error')} ">
+	<label for="ld">
+		<g:message code="voter.ld.label" default="Ld" />
 		
 	</label>
-	<g:textField name="legislativeGeneralElection2001" value="${voterInstance?.legislativeGeneralElection2001}"/>
+	<g:textField name="ld" value="${voterInstance?.ld}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'legislativeGeneralElection2005', 'error')} ">
-	<label for="legislativeGeneralElection2005">
-		<g:message code="voter.legislativeGeneralElection2005.label" default="Legislative General Election2005" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'legacySerialNumber', 'error')} ">
+	<label for="legacySerialNumber">
+		<g:message code="voter.legacySerialNumber.label" default="Legacy Serial Number" />
 		
 	</label>
-	<g:textField name="legislativeGeneralElection2005" value="${voterInstance?.legislativeGeneralElection2005}"/>
+	<g:textField name="legacySerialNumber" value="${voterInstance?.legacySerialNumber}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'legislativeGeneralElection2009', 'error')} ">
-	<label for="legislativeGeneralElection2009">
-		<g:message code="voter.legislativeGeneralElection2009.label" default="Legislative General Election2009" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'localGeneralElection2001', 'error')} ">
+	<label for="localGeneralElection2001">
+		<g:message code="voter.localGeneralElection2001.label" default="Local General Election2001" />
 		
 	</label>
-	<g:textField name="legislativeGeneralElection2009" value="${voterInstance?.legislativeGeneralElection2009}"/>
+	<g:textField name="localGeneralElection2001" value="${voterInstance?.localGeneralElection2001}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'legislativePrimaryElection2001', 'error')} ">
-	<label for="legislativePrimaryElection2001">
-		<g:message code="voter.legislativePrimaryElection2001.label" default="Legislative Primary Election2001" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'localGeneralElection2005', 'error')} ">
+	<label for="localGeneralElection2005">
+		<g:message code="voter.localGeneralElection2005.label" default="Local General Election2005" />
 		
 	</label>
-	<g:textField name="legislativePrimaryElection2001" value="${voterInstance?.legislativePrimaryElection2001}"/>
+	<g:textField name="localGeneralElection2005" value="${voterInstance?.localGeneralElection2005}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'legislativePrimaryElection2005', 'error')} ">
-	<label for="legislativePrimaryElection2005">
-		<g:message code="voter.legislativePrimaryElection2005.label" default="Legislative Primary Election2005" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'localGeneralElection2009', 'error')} ">
+	<label for="localGeneralElection2009">
+		<g:message code="voter.localGeneralElection2009.label" default="Local General Election2009" />
 		
 	</label>
-	<g:textField name="legislativePrimaryElection2005" value="${voterInstance?.legislativePrimaryElection2005}"/>
+	<g:textField name="localGeneralElection2009" value="${voterInstance?.localGeneralElection2009}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'legislativePrimaryElection2009', 'error')} ">
-	<label for="legislativePrimaryElection2009">
-		<g:message code="voter.legislativePrimaryElection2009.label" default="Legislative Primary Election2009" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'localPrimaryElection2001', 'error')} ">
+	<label for="localPrimaryElection2001">
+		<g:message code="voter.localPrimaryElection2001.label" default="Local Primary Election2001" />
 		
 	</label>
-	<g:textField name="legislativePrimaryElection2009" value="${voterInstance?.legislativePrimaryElection2009}"/>
+	<g:textField name="localPrimaryElection2001" value="${voterInstance?.localPrimaryElection2001}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'localPrimaryElection2005', 'error')} ">
+	<label for="localPrimaryElection2005">
+		<g:message code="voter.localPrimaryElection2005.label" default="Local Primary Election2005" />
+		
+	</label>
+	<g:textField name="localPrimaryElection2005" value="${voterInstance?.localPrimaryElection2005}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'localPrimaryElection2009', 'error')} ">
+	<label for="localPrimaryElection2009">
+		<g:message code="voter.localPrimaryElection2009.label" default="Local Primary Election2009" />
+		
+	</label>
+	<g:textField name="localPrimaryElection2009" value="${voterInstance?.localPrimaryElection2009}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'maidenName', 'error')} ">
@@ -186,6 +234,94 @@
 	<g:textField name="maidenName" value="${voterInstance?.maidenName}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'mailingAddress1', 'error')} ">
+	<label for="mailingAddress1">
+		<g:message code="voter.mailingAddress1.label" default="Mailing Address1" />
+		
+	</label>
+	<g:textField name="mailingAddress1" value="${voterInstance?.mailingAddress1}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'mailingAddress2', 'error')} ">
+	<label for="mailingAddress2">
+		<g:message code="voter.mailingAddress2.label" default="Mailing Address2" />
+		
+	</label>
+	<g:textField name="mailingAddress2" value="${voterInstance?.mailingAddress2}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'mailingAddress3', 'error')} ">
+	<label for="mailingAddress3">
+		<g:message code="voter.mailingAddress3.label" default="Mailing Address3" />
+		
+	</label>
+	<g:textField name="mailingAddress3" value="${voterInstance?.mailingAddress3}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'mailingAddress4', 'error')} ">
+	<label for="mailingAddress4">
+		<g:message code="voter.mailingAddress4.label" default="Mailing Address4" />
+		
+	</label>
+	<g:textField name="mailingAddress4" value="${voterInstance?.mailingAddress4}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'mailingCity', 'error')} ">
+	<label for="mailingCity">
+		<g:message code="voter.mailingCity.label" default="Mailing City" />
+		
+	</label>
+	<g:textField name="mailingCity" value="${voterInstance?.mailingCity}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'mailingState', 'error')} ">
+	<label for="mailingState">
+		<g:message code="voter.mailingState.label" default="Mailing State" />
+		
+	</label>
+	<g:textField name="mailingState" value="${voterInstance?.mailingState}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'mailingZipCode', 'error')} ">
+	<label for="mailingZipCode">
+		<g:message code="voter.mailingZipCode.label" default="Mailing Zip Code" />
+		
+	</label>
+	<g:textField name="mailingZipCode" value="${voterInstance?.mailingZipCode}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'mailingZipCodeSuffix', 'error')} ">
+	<label for="mailingZipCodeSuffix">
+		<g:message code="voter.mailingZipCodeSuffix.label" default="Mailing Zip Code Suffix" />
+		
+	</label>
+	<g:textField name="mailingZipCodeSuffix" value="${voterInstance?.mailingZipCodeSuffix}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'mayor', 'error')} ">
+	<label for="mayor">
+		<g:message code="voter.mayor.label" default="Mayor" />
+		
+	</label>
+	<g:textField name="mayor" value="${voterInstance?.mayor}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'metro', 'error')} ">
+	<label for="metro">
+		<g:message code="voter.metro.label" default="Metro" />
+		
+	</label>
+	<g:textField name="metro" value="${voterInstance?.metro}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'metropolitanUtilitiesDistrict', 'error')} ">
+	<label for="metropolitanUtilitiesDistrict">
+		<g:message code="voter.metropolitanUtilitiesDistrict.label" default="Metropolitan Utilities District" />
+		
+	</label>
+	<g:textField name="metropolitanUtilitiesDistrict" value="${voterInstance?.metropolitanUtilitiesDistrict}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'middleInitial', 'error')} ">
 	<label for="middleInitial">
 		<g:message code="voter.middleInitial.label" default="Middle Initial" />
@@ -194,20 +330,28 @@
 	<g:textField name="middleInitial" value="${voterInstance?.middleInitial}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'naturalResourcesDistrict', 'error')} ">
+	<label for="naturalResourcesDistrict">
+		<g:message code="voter.naturalResourcesDistrict.label" default="Natural Resources District" />
+		
+	</label>
+	<g:textField name="naturalResourcesDistrict" value="${voterInstance?.naturalResourcesDistrict}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'oppd', 'error')} ">
+	<label for="oppd">
+		<g:message code="voter.oppd.label" default="Oppd" />
+		
+	</label>
+	<g:textField name="oppd" value="${voterInstance?.oppd}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'party', 'error')} ">
 	<label for="party">
 		<g:message code="voter.party.label" default="Party" />
 		
 	</label>
 	<g:textField name="party" value="${voterInstance?.party}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partySpecial2011', 'error')} ">
-	<label for="partySpecial2011">
-		<g:message code="voter.partySpecial2011.label" default="Party Special2011" />
-		
-	</label>
-	<g:textField name="partySpecial2011" value="${voterInstance?.partySpecial2011}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedGeneralElection1998', 'error')} ">
@@ -266,20 +410,60 @@
 	<g:textField name="partyVotedGeneralElection2010" value="${voterInstance?.partyVotedGeneralElection2010}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedLegislativeGeneralElection2009', 'error')} ">
-	<label for="partyVotedLegislativeGeneralElection2009">
-		<g:message code="voter.partyVotedLegislativeGeneralElection2009.label" default="Party Voted Legislative General Election2009" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedLocalGeneralElection2001', 'error')} ">
+	<label for="partyVotedLocalGeneralElection2001">
+		<g:message code="voter.partyVotedLocalGeneralElection2001.label" default="Party Voted Local General Election2001" />
 		
 	</label>
-	<g:textField name="partyVotedLegislativeGeneralElection2009" value="${voterInstance?.partyVotedLegislativeGeneralElection2009}"/>
+	<g:textField name="partyVotedLocalGeneralElection2001" value="${voterInstance?.partyVotedLocalGeneralElection2001}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedLegislativePrimaryElection2009', 'error')} ">
-	<label for="partyVotedLegislativePrimaryElection2009">
-		<g:message code="voter.partyVotedLegislativePrimaryElection2009.label" default="Party Voted Legislative Primary Election2009" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedLocalGeneralElection2005', 'error')} ">
+	<label for="partyVotedLocalGeneralElection2005">
+		<g:message code="voter.partyVotedLocalGeneralElection2005.label" default="Party Voted Local General Election2005" />
 		
 	</label>
-	<g:textField name="partyVotedLegislativePrimaryElection2009" value="${voterInstance?.partyVotedLegislativePrimaryElection2009}"/>
+	<g:textField name="partyVotedLocalGeneralElection2005" value="${voterInstance?.partyVotedLocalGeneralElection2005}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedLocalGeneralElection2009', 'error')} ">
+	<label for="partyVotedLocalGeneralElection2009">
+		<g:message code="voter.partyVotedLocalGeneralElection2009.label" default="Party Voted Local General Election2009" />
+		
+	</label>
+	<g:textField name="partyVotedLocalGeneralElection2009" value="${voterInstance?.partyVotedLocalGeneralElection2009}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedLocalPrimaryElection2001', 'error')} ">
+	<label for="partyVotedLocalPrimaryElection2001">
+		<g:message code="voter.partyVotedLocalPrimaryElection2001.label" default="Party Voted Local Primary Election2001" />
+		
+	</label>
+	<g:textField name="partyVotedLocalPrimaryElection2001" value="${voterInstance?.partyVotedLocalPrimaryElection2001}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedLocalPrimaryElection2005', 'error')} ">
+	<label for="partyVotedLocalPrimaryElection2005">
+		<g:message code="voter.partyVotedLocalPrimaryElection2005.label" default="Party Voted Local Primary Election2005" />
+		
+	</label>
+	<g:textField name="partyVotedLocalPrimaryElection2005" value="${voterInstance?.partyVotedLocalPrimaryElection2005}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedLocalPrimaryElection2009', 'error')} ">
+	<label for="partyVotedLocalPrimaryElection2009">
+		<g:message code="voter.partyVotedLocalPrimaryElection2009.label" default="Party Voted Local Primary Election2009" />
+		
+	</label>
+	<g:textField name="partyVotedLocalPrimaryElection2009" value="${voterInstance?.partyVotedLocalPrimaryElection2009}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedPrimaryElection1998', 'error')} ">
+	<label for="partyVotedPrimaryElection1998">
+		<g:message code="voter.partyVotedPrimaryElection1998.label" default="Party Voted Primary Election1998" />
+		
+	</label>
+	<g:textField name="partyVotedPrimaryElection1998" value="${voterInstance?.partyVotedPrimaryElection1998}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'partyVotedPrimaryElection2000', 'error')} ">
@@ -338,6 +522,14 @@
 	<g:textField name="placeOfBirth" value="${voterInstance?.placeOfBirth}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'primaryElection1998', 'error')} ">
+	<label for="primaryElection1998">
+		<g:message code="voter.primaryElection1998.label" default="Primary Election1998" />
+		
+	</label>
+	<g:textField name="primaryElection1998" value="${voterInstance?.primaryElection1998}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'primaryElection2000', 'error')} ">
 	<label for="primaryElection2000">
 		<g:message code="voter.primaryElection2000.label" default="Primary Election2000" />
@@ -384,6 +576,14 @@
 		
 	</label>
 	<g:textField name="primaryElection2010" value="${voterInstance?.primaryElection2010}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'publicServiceComission', 'error')} ">
+	<label for="publicServiceComission">
+		<g:message code="voter.publicServiceComission.label" default="Public Service Comission" />
+		
+	</label>
+	<g:textField name="publicServiceComission" value="${voterInstance?.publicServiceComission}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'regularAddressNumber', 'error')} ">
@@ -482,6 +682,14 @@
 	<g:textField name="regularZipCodeSuffix" value="${voterInstance?.regularZipCodeSuffix}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'sCT', 'error')} ">
+	<label for="sCT">
+		<g:message code="voter.sCT.label" default="SCT" />
+		
+	</label>
+	<g:textField name="sCT" value="${voterInstance?.sCT}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'schoolDistrict', 'error')} ">
 	<label for="schoolDistrict">
 		<g:message code="voter.schoolDistrict.label" default="School District" />
@@ -490,20 +698,12 @@
 	<g:textField name="schoolDistrict" value="${voterInstance?.schoolDistrict}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'serialNumber', 'error')} ">
-	<label for="serialNumber">
-		<g:message code="voter.serialNumber.label" default="Serial Number" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'stateBoardofEducation', 'error')} ">
+	<label for="stateBoardofEducation">
+		<g:message code="voter.stateBoardofEducation.label" default="State Boardof Education" />
 		
 	</label>
-	<g:textField name="serialNumber" value="${voterInstance?.serialNumber}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'specialElection2011', 'error')} ">
-	<label for="specialElection2011">
-		<g:message code="voter.specialElection2011.label" default="Special Election2011" />
-		
-	</label>
-	<g:textField name="specialElection2011" value="${voterInstance?.specialElection2011}"/>
+	<g:textField name="stateBoardofEducation" value="${voterInstance?.stateBoardofEducation}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'suffix', 'error')} ">
@@ -522,11 +722,11 @@
 	<g:textField name="title" value="${voterInstance?.title}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'wardPrecinct', 'error')} ">
-	<label for="wardPrecinct">
-		<g:message code="voter.wardPrecinct.label" default="Ward Precinct" />
+<div class="fieldcontain ${hasErrors(bean: voterInstance, field: 'wp', 'error')} ">
+	<label for="wp">
+		<g:message code="voter.wp.label" default="Wp" />
 		
 	</label>
-	<g:textField name="wardPrecinct" value="${voterInstance?.wardPrecinct}"/>
+	<g:textField name="wp" value="${voterInstance?.wp}"/>
 </div>
 

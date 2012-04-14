@@ -20,7 +20,8 @@
 			<filterpane:filterPane domain="voterregistration.Voter" filterProperties="title, firstName, middleInitial, lastName, suffix, dateOfBirth, 
 			dateofRegistration, placeOfBirth, gender, party, serialNumber, regularAddressNumber, regularAddressNumberSuffix
 			regularStreetDirectionPrefix, regularStreetName, regularStreetType, regularStreetDirectionSuffix, regularUnitType, regularUnitNumber,
-			regularCity, regularState, regularZipCode, regularZipCodeSuffix, dateOfPartyAffiliation"/>
+			regularCity, regularState, regularZipCode, regularZipCodeSuffix, mailingAddress1, mailingAddress2, mailingAddress3, mailingAddress4,
+			mailingCity, mailingState, mailingZipCode, mailingZipCodeSuffix, party, dateOfPartyAffiliation"/>
 			<filterpane:filterButton title="Filter" />
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
