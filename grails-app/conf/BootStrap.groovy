@@ -4,8 +4,10 @@ class BootStrap {
 	
 	
     def init = { servletContext ->
-
-		new File("/home/stephen/Desktop/Douglas_County_Voter_Registration_small.csv").eachCsvLine { tokens ->
+		def voterCount = Voter.count()
+		println voterCount
+		if(voterCount == 0){
+		new File("/home/user/Downloads/Douglas_County_Voter_Registration_small.csv").eachCsvLine { tokens ->
 			new Voter(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], tokens[8], tokens[9], tokens[10],
 				tokens[11], tokens[12], tokens[13], tokens[14], tokens[15], tokens[16], tokens[17], tokens[18], tokens[19], tokens[20],
 				tokens[21], tokens[22], tokens[23], tokens[24], tokens[25], tokens[26], tokens[27], tokens[28], tokens[29], tokens[30],
@@ -20,6 +22,7 @@ class BootStrap {
 		
 		List<Voter> headerVoter = Voter.findAllWhere(title:"Title");
 		headerVoter.each { voter -> voter.delete(); }
+		}
 
     }
     def destroy = {
