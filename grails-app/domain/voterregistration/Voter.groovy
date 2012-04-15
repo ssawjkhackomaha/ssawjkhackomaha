@@ -295,6 +295,15 @@ class Voter {
 	String legislativeDistrict;
 	String schoolDistrict;
 	
+	public String toString() {
+		return this.getFirstName() + " " + this.getLastName() + " - " + this.getParty() + " | Address:" + this.getAddress();
+	}
+	
+	public String getAddress() {
+		String address = this?.regularAddressNumber + " " + this?.regularAddressNumberSuffix + " " + this?.regularStreetDirectionPrefix + " " + this?.regularStreetName + " " + this?.regularStreetType + " " + this?.regularStreetDirectionSuffix + ", " + this?.regularCity + ", " + this?.regularState;
+		
+		return address;
+	}
 
     static constraints = {
 		

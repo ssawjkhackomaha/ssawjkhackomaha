@@ -82,7 +82,7 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
+		<!--  <div id="status" role="complementary">
 			<h1>Application Status</h1>
 			<ul>
 				<li>App version: <g:meta name="app.version"/></li>
@@ -101,21 +101,22 @@
 					<li>${plugin.name} - ${plugin.version}</li>
 				</g:each>
 			</ul>
-		</div>
+		</div> -->
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
+			<h1>Welcome to the Voter Registratoin App</h1>
+			<p>Please use the links below to use this application. You can search by filtering on properties as well as a Google-like search.</p>
 
 			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
+				<h2>Available Links:</h2>
 				<ul>
+					<li class="controller"><a href="/VoterRegistration/searchable">Google-Like Search</a></li>
+					<li class="controller"><a href="/VoterRegistration/voter/list">Complete Voter List (Use Filter Link to Filter)</a></li>
+				</ul>
+				<!--  <ul>
 					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
 						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
 					</g:each>
-				</ul>
+				</ul>  -->
 			</div>
 		</div>
 	</body>

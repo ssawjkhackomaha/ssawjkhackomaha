@@ -131,14 +131,14 @@
 			        var marker = new google.maps.Marker({
 			            map: map,
 			            position: latlng,
-			            title: data.firstName+" "+data.lastName+" - "+data.party,
+			            title: data.info,
 			            icon: pinImageRed  
 			        });
 		        } else if (data.party == "Democrat"){
 			        var marker = new google.maps.Marker({
 			            map: map,
 			            position: latlng,
-			            title: data.firstName+" "+data.lastName+" - "+data.party,
+			            title: data.info,
 			            icon: pinImageBlue
 			        });
 
@@ -146,7 +146,7 @@
 			        var marker = new google.maps.Marker({
 			            map: map,
 			            position: latlng,
-			            title: data.firstName+" "+data.lastName+" - "+data.party,
+			            title: data.info,
 			            icon: pinImageGreen  
 			        });
 
@@ -154,7 +154,7 @@
 
 		        google.maps.event.addListener(marker, 'click', (function(marker, data) {
 		            return function() {
-		              infowindow.setContent(data.firstName + " " + data.lastName + " - " + data.party);
+		              infowindow.setContent(data.info);
 		              infowindow.open(map, marker);
 		            }
 		          })(marker, data));
@@ -175,21 +175,30 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<!--  <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>  -->
 			</ul>
 		</div>
 		<div id="list-voter" class="content scaffold-list" role="main">
 			<div id="map_canvas" style="padding-top: 200px; padding-left: 200px; width: 79%; height: 400px;"></div>
 			<filterpane:filterPane domain="voterregistration.Voter" filterProperties="title, firstName, middleInitial, lastName, suffix, dateOfBirth, 
-			dateofRegistration, placeOfBirth, gender, party, serialNumber, regularAddressNumber, regularAddressNumberSuffix
+			dateofRegistration, placeOfBirth, gender, party, serialNumber, regularAddressNumber, regularAddressNumberSuffix, regularAddressNumberPrefix,
 			regularStreetDirectionPrefix, regularStreetName, regularStreetType, regularStreetDirectionSuffix, regularUnitType, regularUnitNumber,
-			regularCity, regularState, regularZipCode, regularZipCodeSuffix, mailingAddress1, mailingAddress2, mailingAddress3, mailingAddress4,
-			mailingCity, mailingState, mailingZipCode, mailingZipCodeSuffix, party, dateOfPartyAffiliation"/>
-			<filterpane:filterButton title="Filter" />
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			regularCity, regularState, regularZipCode, regularZipCodeSuffix, party, dateOfPartyAffiliation, wardPrecinct"/>
+			
+			<h1><g:message code="default.list.label" args="[entityName]" /> - <filterpane:filterButton title="Filter" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+			<h2>Filter Statistics</h2>
+			<div id="totalRepublican">Total Republicans: ${totalRepublicans}</div> 
+			<div id="totalDemocrat">Total Democrats: ${totalDemocrats}</div>
+			<div id="totalNonpartisan">Total Nonpartisans: ${totalNonpartisan}</div>
+			<br>
+			<div id="totalRepublicanPage">Total Republicans (this page): ${totalRepublicansPage}</div> 
+			<div id="totalDemocratPage">Total Democrats (this page): ${totalDemocratsPage}</div>
+			<div id="totalNonpartisanPage">Total Nonpartisan (this page): ${totalNonpartisanPage}</div>
+			<br>
+			
 			<input type="checkbox" onclick="toggleChecked(this.checked)"> Select / Deselect All
 			<table>
 				<thead>
@@ -232,9 +241,10 @@
 				</g:each>
 				</tbody>
 			</table>
-<%--			<div class="pagination">--%>
-<%--				<g:paginate total="${voterInstanceTotal == null ? Voter.count(): voterInstanceTotal}" params="${filterParams}" />--%>
-<%--			</div>--%>
+			<div class="pagination">
+				<!-- <g:paginate total="${voterInstanceTotal == null ? Voter.count(): voterInstanceTotal}" params="${filterParams}" /> -->
+				<g:paginate total="${voterInstanceTotal}" params="${filterParams}" action="filter" />
+			</div>
 		</div>
 	</body>
 </html>

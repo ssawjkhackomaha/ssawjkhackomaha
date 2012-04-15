@@ -10,10 +10,58 @@ class VoterController {
 	def filterPaneService;
 	
 	def filter = {
-		//if(!params.max) params.max = 10
+		String origOffset = 0;
+		if (params.offset != null) {
+			origOffset = params.offset;
+		}
+		
+		params.offset = "0";
+		params.max = 1000000;
+		def voterListTotal = filterPaneService.filter( params, Voter );
+		int totalRepubs = 0;
+		int totalDems = 0;
+		int totalNon = 0;
+		
+		for(Voter voter : voterListTotal) {
+			if (voter.getParty().equals("Republican")) {
+				totalRepubs++;
+			} else if (voter.getParty().equals("Democrat")) {
+				totalDems++;
+			} else if (voter.getParty().equals("Nonpartisan")) {
+				totalNon++;
+			}
+		}
+		
+		params.offset = origOffset;
+		params.max = 20
+		def voterList = filterPaneService.filter( params, Voter );
+		int totalRepubsPage = 0;
+		int totalDemsPage = 0;
+		int totalNonPage = 0;
+		
+		for(Voter voter : voterList) {
+			if (voter.getParty().equals("Republican")) {
+				totalRepubsPage++;
+			} else if (voter.getParty().equals("Democrat")) {
+				totalDemsPage++;
+			} else if (voter.getParty().equals("Nonpartisan")) {
+				totalNonPage++;
+			}
+		}
+		
+
+		
 		render( view:'listmap',
-			model:[ voterInstanceList: filterPaneService.filter( params, Voter ),
-			voterInstanceTotal: filterPaneService.count( params, Voter ) ] )
+			model:[ voterInstanceList: voterList,
+			voterInstanceTotal: filterPaneService.count( params, Voter ),
+			filterParams: org.grails.plugin.filterpane.FilterPaneUtils.extractFilterParams(params), 
+			totalRepublicans: totalRepubs,
+			totalDemocrats: totalDems,
+			totalNonpartisan: totalNon,
+			totalRepublicansPage: totalRepubsPage,
+			totalDemocratsPage: totalDemsPage,
+			totalNonpartisanPage: totalNonPage,
+			params:params] )
 	}
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -27,10 +75,10 @@ class VoterController {
         [voterInstanceList: Voter.list(params), voterInstanceTotal: Voter.count()]
     }
 	
-	def listmap() {
-		//params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[voterInstanceList: Voter.list(params), voterInstanceTotal: Voter.count()]
-	}
+//	def listmap() {
+//		//params.max = Math.min(params.max ? params.int('max') : 100, 200)
+//		[voterInstanceList: Voter.list(params), voterInstanceTotal: Voter.count()]
+//	}
 
     def create() {
         [voterInstance: new Voter(params)]
@@ -132,7 +180,7 @@ class VoterController {
 	def getLatLong = {
 		def id = params.id?.toInteger() ?: "NO Voter"
 		def wait = params.time?.toInteger() ?: 0;
-		def voter = Voter.get(id);
+		Voter voter = Voter.get(id);
 		
 		if(!voter){
 		  voter = new Voter(firstName: "Not found.");
@@ -141,7 +189,8 @@ class VoterController {
 		sleep(wait);
 		//city = 'New York'
 		//state = 'NY'
-		String address = voter.regularAddressNumber + " " + voter.regularAddressNumberSuffix + " " + voter.regularStreetDirectionPrefix + " " + voter.regularStreetName + " " + voter.regularStreetDirectionSuffix + " " + voter.regularStreetType + "," + voter.regularCity + "," + voter.regularState;
+		//String address = voter.regularAddressNumber + " " + voter.regularAddressNumberSuffix + " " + voter.regularStreetDirectionPrefix + " " + voter.regularStreetName + " " + voter.regularStreetDirectionSuffix + " " + voter.regularStreetType + "," + voter.regularCity + "," + voter.regularState;
+		String address = voter.getAddress();
 		String base = 'http://maps.google.com/maps/api/geocode/xml?'
 		Map params1 = [sensor:false,
 				  address:[address].collect { URLEncoder.encode(it,'UTF-8') }.join(',+')]
@@ -155,7 +204,7 @@ class VoterController {
 		// Finders work too
 		String lng = response1.'**'.find { it.name() =~ /lng/ }
 		
-		Map result = ["latitude": lat, "longitude": lng, "id": id, "firstName": voter.getFirstName(), "lastName": voter.getLastName(), "party": voter.getParty()];
+		Map result = ["latitude": lat, "longitude": lng, "id": id, "info": voter.toString(), "party": voter.getParty()];
 		//println result;
 		if (lat == null || lng == null) {
 			println address;
