@@ -81,8 +81,8 @@
 		  }
 		
 		  function codeAddress(data) {
-			
-		    var address = data.regularAddressNumber + " " + data.regularAddressNumberSuffix + " " + data.regularStreetDirectionPrefix + " " + data.regularStreetName + " " + data.regularStreetDirectionSuffix + " " + data.regularStreetType + "," + data.regularCity + "," + data.regularState;
+			var voter = data;
+		    var address = voter.regularAddressNumber + " " + voter.regularAddressNumberSuffix + " " + voter.regularStreetDirectionPrefix + " " + voter.regularStreetName + " " + voter.regularStreetDirectionSuffix + " " + voter.regularStreetType + "," + voter.regularCity + "," + voter.regularState;
 		    //alert(data.id);
 		    wait = wait + 110;
 		    $.getJSON('/VoterRegistration/voter/getLatLong/' + data.id + "?time=" + wait, function(data) { addAddress(data); });
@@ -94,14 +94,7 @@
 <%--			            map: map,--%>
 <%--			            position: results[0].geometry.location--%>
 <%--			        });--%>
-
-	<%--		        alert(data);--%>
-	<%--		        google.maps.event.addListener(marker, 'click', (function(marker, data) {--%>
-	<%--		            return function() {--%>
-	<%--		              infowindow.setContent(data.firstName + " " + data.lastName + "-" data.party);--%>
-	<%--		              infowindow.open(map, marker);--%>
-	<%--		            }--%>
-	<%--		          })(marker, data));--%>
+			         
 <%--			          --%>
 <%--			      } else {--%>
 <%--			        alert("Geocode was not successful for the following reason: " + status);--%>
@@ -112,10 +105,59 @@
 		  function addAddress(data) {
 			  var latlng = new google.maps.LatLng(data.latitude, data.longitude);
 		        //map.setCenter(latlng);
-		        var marker = new google.maps.Marker({
-		            map: map,
-		            position: latlng
-		        });
+		        
+		        // Create our "tiny" marker icon
+		        var pinColorRed = "FE7569";
+		        var pinColorBlue = "3366CC";
+		        var pinColorGreen = "33FF00";
+		        
+		        var pinImageRed = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorRed,
+			        new google.maps.Size(21, 34),
+			        new google.maps.Point(0,0),
+			        new google.maps.Point(10, 34));
+
+		        var pinImageBlue = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorBlue,
+				    new google.maps.Size(21, 34),
+				    new google.maps.Point(0,0),
+				    new google.maps.Point(10, 34));
+
+		        var pinImageGreen = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorGreen,
+					    new google.maps.Size(21, 34),
+					    new google.maps.Point(0,0),
+					    new google.maps.Point(10, 34));
+		        
+		        
+		        if (data.party == "Republican") { 
+			        var marker = new google.maps.Marker({
+			            map: map,
+			            position: latlng,
+			            title: data.firstName+" "+data.lastName+" - "+data.party,
+			            icon: pinImageRed  
+			        });
+		        } else if (data.party == "Democrat"){
+			        var marker = new google.maps.Marker({
+			            map: map,
+			            position: latlng,
+			            title: data.firstName+" "+data.lastName+" - "+data.party,
+			            icon: pinImageBlue
+			        });
+
+			    } else {
+			        var marker = new google.maps.Marker({
+			            map: map,
+			            position: latlng,
+			            title: data.firstName+" "+data.lastName+" - "+data.party,
+			            icon: pinImageGreen  
+			        });
+
+				}
+
+		        google.maps.event.addListener(marker, 'click', (function(marker, data) {
+		            return function() {
+		              infowindow.setContent(data.firstName + " " + data.lastName + " - " + data.party);
+		              infowindow.open(map, marker);
+		            }
+		          })(marker, data));
 
 		   }
 

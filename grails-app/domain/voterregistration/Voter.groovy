@@ -117,7 +117,7 @@ class Voter {
 		this.partyVotedGeneralElection2000 = partyVotedGeneralElection2000;
 		this.primaryElection2000 = primaryElection2000;
 		this.partyVotedPrimaryElection2000 = partyVotedPrimaryElection2000;
-		this.generalElection1998 = generalElection1998;
+		this.generalElection1998  generalElection1998;
 		this.partyVotedGeneralElection1998 = partyVotedGeneralElection1998;
 		this.primaryElection1998 = primaryElection1998;
 		this.partyVotedPrimaryElection1998 = partyVotedPrimaryElection1998;

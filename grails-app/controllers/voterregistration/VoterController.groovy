@@ -155,7 +155,7 @@ class VoterController {
 		// Finders work too
 		String lng = response1.'**'.find { it.name() =~ /lng/ }
 		
-		Map result = ["latitude": lat, "longitude": lng, "id": id];
+		Map result = ["latitude": lat, "longitude": lng, "id": id, "firstName": voter.getFirstName(), "lastName": voter.getLastName(), "party": voter.getParty()];
 		//println result;
 		if (lat == null || lng == null) {
 			println address;
