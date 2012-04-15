@@ -302,11 +302,13 @@ class Voter {
     }
 	
 	static mapping = {
-/*		//need to remove all the spaces and put in underscores!
+	//need to remove all the spaces and put in underscores!
 		//must add version column.
-		table 'VOTER'
-		//id column: 'Serial'
+		table 'voter2'
+		id column: 'id'
+		version column: 'version'
 		//serialNumber column: 'Serial_#'
+		/*	
 		title column: 'TITLE'
 		firstName column: 'FIRST_NAME'
 		middleInitial column: 'MI'
