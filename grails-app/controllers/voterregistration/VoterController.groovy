@@ -185,24 +185,28 @@ class VoterController {
 		if(!voter){
 		  voter = new Voter(firstName: "Not found.");
 		}
+		
+		//List parcels = Parcel.findAllByHouseAndStreet_dirAndStreet_namAndStreet_typ(voter.getRegularAddressNumber(), voter.getRegularStreetDirectionPrefix(), voter.getRegularStreetName(), voter.getRegularStreetType());
 
-		sleep(wait);
-		//city = 'New York'
-		//state = 'NY'
-		//String address = voter.regularAddressNumber + " " + voter.regularAddressNumberSuffix + " " + voter.regularStreetDirectionPrefix + " " + voter.regularStreetName + " " + voter.regularStreetDirectionSuffix + " " + voter.regularStreetType + "," + voter.regularCity + "," + voter.regularState;
-		String address = voter.getAddress();
-		String base = 'http://maps.google.com/maps/api/geocode/xml?'
-		Map params1 = [sensor:false,
-				  address:[address].collect { URLEncoder.encode(it,'UTF-8') }.join(',+')]
-		String url = base + params1.collect { k,v -> "$k=$v" }.join('&')
-		
-		GPathResult response1 = new XmlSlurper().parse(url)
-		
-		// Walk the tree
-		String lat = response1.result.geometry.location.lat
-		
-		// Finders work too
-		String lng = response1.'**'.find { it.name() =~ /lng/ }
+		//if (parcels.size() == 0) {
+			sleep(wait);
+			//city = 'New York'
+			//state = 'NY'
+			//String address = voter.regularAddressNumber + " " + voter.regularAddressNumberSuffix + " " + voter.regularStreetDirectionPrefix + " " + voter.regularStreetName + " " + voter.regularStreetDirectionSuffix + " " + voter.regularStreetType + "," + voter.regularCity + "," + voter.regularState;
+			String address = voter.getAddress();
+			String base = 'http://maps.google.com/maps/api/geocode/xml?'
+			Map params1 = [sensor:false,
+					  address:[address].collect { URLEncoder.encode(it,'UTF-8') }.join(',+')]
+			String url = base + params1.collect { k,v -> "$k=$v" }.join('&')
+			
+			GPathResult response1 = new XmlSlurper().parse(url)
+			
+			// Walk the tree
+			String lat = response1.result.geometry.location.lat
+			
+			// Finders work too
+			String lng = response1.'**'.find { it.name() =~ /lng/ }
+		//}
 		
 		Map result = ["latitude": lat, "longitude": lng, "id": id, "info": voter.toString(), "party": voter.getParty()];
 		//println result;

@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title><g:if test="${params.q && params.q?.trim() != ''}">${params.q} - </g:if>Grails Searchable Plugin</title>
+    <title><g:if test="${params.q && params.q?.trim() != ''}">${params.q} - </g:if>Voter Registration Search</title>
     <style type="text/css">
       * {
         font-family: Arial, sans-serif;
@@ -90,7 +90,7 @@
   </head>
   <body onload="focusQueryInput();">
   <div id="header">
-    <h1><a href="http://grails.org/Searchable+Plugin" target="_blank">Grails <span>Searchable</span> Plugin</a></h1>
+    <h1>Voter Registration Search</h1>
     <g:form url='[controller: "searchable", action: "index"]' id="searchableForm" name="searchableForm" method="get">
         <g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Search" />
     </g:form>
